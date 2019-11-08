@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+<h2>XRef</h2>
+<table>
+  <tr>
+    <th>File</th>
+    <th>Source Code</th>
+    <th>Machine Code</th>
+  </tr>
+  <% blocks.each do |block| %>
+    <tr>
+    <td><pre><%= block[2] %></pre></td>
+     <% 
+      sourceentry = ""
+      block[0].each do |sourceline|
+        sourceentry.concat(sourceline)
+        sourceentry.concat("\n") %>
+      <% end %>
+      <td><pre><%= sourceentry %></pre></td> 
+      <%
+      mlentry = ""
+      block[1].each do |mlline|
+        mlentry.concat(mlline)
+        mlentry.concat("\n") %>
+      <% end %>
+      <td><pre><%= mlentry %></pre></td>
+    </tr>
+  <% end %>
+</table>
+
+</body>
+</html>
+
