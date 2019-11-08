@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+<h2>XRef</h2>
+<table>
+  <tr>
+    <th>File</th>
+    <th>Source Code</th>
+    <th>Machine Code</th>
+  </tr>
+  
+    <tr>
+    <td><pre></pre></td>
+     
+      <td><pre></pre></td> 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <td><pre>1. 
+2. a.out:     file format elf64-x86-64
+3. 
+4. 
+5. Disassembly of section .init:
+6. 
+7. 0000000000401000 <_init>:
+8.   401000:	f3 0f 1e fa          	endbr64 
+9.   401004:	48 83 ec 08          	sub    $0x8,%rsp
+10.   401008:	48 8b 05 e9 2f 00 00 	mov    0x2fe9(%rip),%rax        # 403ff8 <__gmon_start__>
+11.   40100f:	48 85 c0             	test   %rax,%rax
+12.   401012:	74 02                	je     401016 <_init+0x16>
+13.   401014:	ff d0                	callq  *%rax
+14.   401016:	48 83 c4 08          	add    $0x8,%rsp
+15.   40101a:	c3                   	retq   
+16. 
+17. Disassembly of section .plt:
+18. 
+19. 0000000000401020 <.plt>:
+20.   401020:	ff 35 e2 2f 00 00    	pushq  0x2fe2(%rip)        # 404008 <_GLOBAL_OFFSET_TABLE_+0x8>
+21.   401026:	ff 25 e4 2f 00 00    	jmpq   *0x2fe4(%rip)        # 404010 <_GLOBAL_OFFSET_TABLE_+0x10>
+22.   40102c:	0f 1f 40 00          	nopl   0x0(%rax)
+23. 
+24. 0000000000401030 <printf@plt>:
+25.   401030:	ff 25 e2 2f 00 00    	jmpq   *0x2fe2(%rip)        # 404018 <printf@GLIBC_2.2.5>
+26.   401036:	68 00 00 00 00       	pushq  $0x0
+27.   40103b:	e9 e0 ff ff ff       	jmpq   401020 <.plt>
+28. 
+29. Disassembly of section .text:
+30. 
+31. 0000000000401040 <_start>:
+32.   401040:	f3 0f 1e fa          	endbr64 
+33.   401044:	31 ed                	xor    %ebp,%ebp
+34.   401046:	49 89 d1             	mov    %rdx,%r9
+35.   401049:	5e                   	pop    %rsi
+36.   40104a:	48 89 e2             	mov    %rsp,%rdx
+37.   40104d:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+38.   401051:	50                   	push   %rax
+39.   401052:	54                   	push   %rsp
+40.   401053:	49 c7 c0 d0 11 40 00 	mov    $0x4011d0,%r8
+41.   40105a:	48 c7 c1 60 11 40 00 	mov    $0x401160,%rcx
+42.   401061:	48 c7 c7 3c 11 40 00 	mov    $0x40113c,%rdi
+43.   401068:	ff 15 82 2f 00 00    	callq  *0x2f82(%rip)        # 403ff0 <__libc_start_main@GLIBC_2.2.5>
+44.   40106e:	f4                   	hlt    
+45. 
+46. 000000000040106f <.annobin_init.c>:
+47.   40106f:	90                   	nop
+48. 
+49. 0000000000401070 <_dl_relocate_static_pie>:
+50.   401070:	f3 0f 1e fa          	endbr64 
+51.   401074:	c3                   	retq   
+52. 
+53. 0000000000401075 <.annobin__dl_relocate_static_pie.end>:
+54.   401075:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+55.   40107c:	00 00 00 
+56.   40107f:	90                   	nop
+57. 
+58. 0000000000401080 <deregister_tm_clones>:
+59.   401080:	b8 28 40 40 00       	mov    $0x404028,%eax
+60.   401085:	48 3d 28 40 40 00    	cmp    $0x404028,%rax
+61.   40108b:	74 13                	je     4010a0 <deregister_tm_clones+0x20>
+62.   40108d:	b8 00 00 00 00       	mov    $0x0,%eax
+63.   401092:	48 85 c0             	test   %rax,%rax
+64.   401095:	74 09                	je     4010a0 <deregister_tm_clones+0x20>
+65.   401097:	bf 28 40 40 00       	mov    $0x404028,%edi
+66.   40109c:	ff e0                	jmpq   *%rax
+67.   40109e:	66 90                	xchg   %ax,%ax
+68.   4010a0:	c3                   	retq   
+69.   4010a1:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
+70.   4010a8:	00 00 00 00 
+71.   4010ac:	0f 1f 40 00          	nopl   0x0(%rax)
+72. 
+73. 00000000004010b0 <register_tm_clones>:
+74.   4010b0:	be 28 40 40 00       	mov    $0x404028,%esi
+75.   4010b5:	48 81 ee 28 40 40 00 	sub    $0x404028,%rsi
+76.   4010bc:	48 89 f0             	mov    %rsi,%rax
+77.   4010bf:	48 c1 ee 3f          	shr    $0x3f,%rsi
+78.   4010c3:	48 c1 f8 03          	sar    $0x3,%rax
+79.   4010c7:	48 01 c6             	add    %rax,%rsi
+80.   4010ca:	48 d1 fe             	sar    %rsi
+81.   4010cd:	74 11                	je     4010e0 <register_tm_clones+0x30>
+82.   4010cf:	b8 00 00 00 00       	mov    $0x0,%eax
+83.   4010d4:	48 85 c0             	test   %rax,%rax
+84.   4010d7:	74 07                	je     4010e0 <register_tm_clones+0x30>
+85.   4010d9:	bf 28 40 40 00       	mov    $0x404028,%edi
+86.   4010de:	ff e0                	jmpq   *%rax
+87.   4010e0:	c3                   	retq   
+88.   4010e1:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
+89.   4010e8:	00 00 00 00 
+90.   4010ec:	0f 1f 40 00          	nopl   0x0(%rax)
+91. 
+92. 00000000004010f0 <__do_global_dtors_aux>:
+93.   4010f0:	f3 0f 1e fa          	endbr64 
+94.   4010f4:	80 3d 2c 2f 00 00 00 	cmpb   $0x0,0x2f2c(%rip)        # 404027 <_edata>
+95.   4010fb:	75 13                	jne    401110 <__do_global_dtors_aux+0x20>
+96.   4010fd:	55                   	push   %rbp
+97.   4010fe:	48 89 e5             	mov    %rsp,%rbp
+98.   401101:	e8 7a ff ff ff       	callq  401080 <deregister_tm_clones>
+99.   401106:	c6 05 1a 2f 00 00 01 	movb   $0x1,0x2f1a(%rip)        # 404027 <_edata>
+100.   40110d:	5d                   	pop    %rbp
+101.   40110e:	c3                   	retq   
+102.   40110f:	90                   	nop
+103.   401110:	c3                   	retq   
+104.   401111:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
+105.   401118:	00 00 00 00 
+106.   40111c:	0f 1f 40 00          	nopl   0x0(%rax)
+107. 
+108. 0000000000401120 <frame_dummy>:
+109.   401120:	f3 0f 1e fa          	endbr64 
+110.   401124:	eb 8a                	jmp    4010b0 <register_tm_clones>
+111. 
+112. 0000000000401126 <yee>:
+</pre></td>
+    </tr>
+  
+    <tr>
+    <td><pre>hello.h</pre></td>
+     
+      
+      <td><pre>6. {
+</pre></td> 
+      
+      
+      
+      <td><pre>113.   401126:	55                   	push   %rbp
+114.   401127:	48 89 e5             	mov    %rsp,%rbp
+</pre></td>
+    </tr>
+  
+    <tr>
+    <td><pre>hello.h</pre></td>
+     
+      
+      <td><pre>7.  printf("heyo");
+</pre></td> 
+      
+      
+      
+      
+      <td><pre>115.   40112a:	bf 10 20 40 00       	mov    $0x402010,%edi
+116.   40112f:	b8 00 00 00 00       	mov    $0x0,%eax
+117.   401134:	e8 f7 fe ff ff       	callq  401030 <printf@plt>
+</pre></td>
+    </tr>
+  
+    <tr>
+    <td><pre>hello.h</pre></td>
+     
+      
+      <td><pre>8. }
+</pre></td> 
+      
+      
+      
+      
+      
+      
+      <td><pre>118.   401139:	90                   	nop
+119.   40113a:	5d                   	pop    %rbp
+120.   40113b:	c3                   	retq   
+121. 
+122. 000000000040113c <main>:
+</pre></td>
+    </tr>
+  
+    <tr>
+    <td><pre>hello.c</pre></td>
+     
+      
+      <td><pre>4. {
+</pre></td> 
+      
+      
+      
+      <td><pre>123.   40113c:	55                   	push   %rbp
+124.   40113d:	48 89 e5             	mov    %rsp,%rbp
+</pre></td>
+    </tr>
+  
+    <tr>
+    <td><pre>hello.c</pre></td>
+     
+      
+      <td><pre>5. 	yee();
+</pre></td> 
+      
+      
+      
+      
+      <td><pre>125.   401140:	b8 00 00 00 00       	mov    $0x0,%eax
+126.   401145:	e8 dc ff ff ff       	callq  401126 <yee>
+127.   40114a:	b8 00 00 00 00       	mov    $0x0,%eax
+</pre></td>
+    </tr>
+  
+    <tr>
+    <td><pre>hello.c</pre></td>
+     
+      
+      <td><pre>6. }
+</pre></td> 
+      
+      
+      
+      <td><pre>128.   40114f:	5d                   	pop    %rbp
+129.   401150:	c3                   	retq   
+</pre></td>
+    </tr>
+  
+    <tr>
+    <td><pre>hello.c</pre></td>
+     
+      
+      <td><pre>6. }
+</pre></td> 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <td><pre>130.   401151:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+131.   401158:	00 00 00 
+132.   40115b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+133. 
+134. 0000000000401160 <__libc_csu_init>:
+135.   401160:	f3 0f 1e fa          	endbr64 
+136.   401164:	41 57                	push   %r15
+137.   401166:	4c 8d 3d a3 2c 00 00 	lea    0x2ca3(%rip),%r15        # 403e10 <__frame_dummy_init_array_entry>
+138.   40116d:	41 56                	push   %r14
+139.   40116f:	49 89 d6             	mov    %rdx,%r14
+140.   401172:	41 55                	push   %r13
+141.   401174:	49 89 f5             	mov    %rsi,%r13
+142.   401177:	41 54                	push   %r12
+143.   401179:	41 89 fc             	mov    %edi,%r12d
+144.   40117c:	55                   	push   %rbp
+145.   40117d:	48 8d 2d 94 2c 00 00 	lea    0x2c94(%rip),%rbp        # 403e18 <__init_array_end>
+146.   401184:	53                   	push   %rbx
+147.   401185:	4c 29 fd             	sub    %r15,%rbp
+148.   401188:	48 83 ec 08          	sub    $0x8,%rsp
+149.   40118c:	e8 6f fe ff ff       	callq  401000 <_init>
+150.   401191:	48 c1 fd 03          	sar    $0x3,%rbp
+151.   401195:	74 1f                	je     4011b6 <__libc_csu_init+0x56>
+152.   401197:	31 db                	xor    %ebx,%ebx
+153.   401199:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+154.   4011a0:	4c 89 f2             	mov    %r14,%rdx
+155.   4011a3:	4c 89 ee             	mov    %r13,%rsi
+156.   4011a6:	44 89 e7             	mov    %r12d,%edi
+157.   4011a9:	41 ff 14 df          	callq  *(%r15,%rbx,8)
+158.   4011ad:	48 83 c3 01          	add    $0x1,%rbx
+159.   4011b1:	48 39 dd             	cmp    %rbx,%rbp
+160.   4011b4:	75 ea                	jne    4011a0 <__libc_csu_init+0x40>
+161.   4011b6:	48 83 c4 08          	add    $0x8,%rsp
+162.   4011ba:	5b                   	pop    %rbx
+163.   4011bb:	5d                   	pop    %rbp
+164.   4011bc:	41 5c                	pop    %r12
+165.   4011be:	41 5d                	pop    %r13
+166.   4011c0:	41 5e                	pop    %r14
+167.   4011c2:	41 5f                	pop    %r15
+168.   4011c4:	c3                   	retq   
+169.   4011c5:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
+170.   4011cc:	00 00 00 00 
+171. 
+172. 00000000004011d0 <__libc_csu_fini>:
+173.   4011d0:	f3 0f 1e fa          	endbr64 
+174.   4011d4:	c3                   	retq   
+175. 
+176. Disassembly of section .fini:
+177. 
+178. 00000000004011d8 <_fini>:
+179.   4011d8:	f3 0f 1e fa          	endbr64 
+180.   4011dc:	48 83 ec 08          	sub    $0x8,%rsp
+181.   4011e0:	48 83 c4 08          	add    $0x8,%rsp
+182.   4011e4:	c3                   	retq   
+</pre></td>
+    </tr>
+  
+</table>
+
+</body>
+</html>
+

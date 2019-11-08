@@ -5,7 +5,7 @@ require 'fileutils'
 system("llvm-dwarfdump --debug-line > dwarfdump.txt")
 dwarfdump_file = File.open("dwarfdump.txt")
 dwarfdump_lines = dwarfdump_file.readlines.map(&:chomp)
-
+time = Time.now.getutc
 files = Hash.new
 line_table = Hash.new
 relevant_files = Set.new
@@ -127,7 +127,25 @@ end
 template = File.read('./template.html.erb')
 result = ERB.new(template).result(binding)
 
-File.delete("HTML/xref.rb") if File.exist?("HTML/xref.rb")
+index_template = File.read('./index_template.html.erb')
+index_result = ERB.new(index_template).result(binding)
+
+if File.exist?("HTML/index.html")
+   File.delete("HTML/index.html")
+end
+
+File.new("HTML/index.html", "w")
+
+# write result to file
+File.open('HTML/index.html', 'w+') do |f|
+  f.write index_result
+end
+
+if File.exist?("HTML/xref.html")
+   File.delete("HTML/xref.html")
+end
+
+File.new("HTML/xref.html", "w")
 # write result to file
 File.open('HTML/xref.html', 'w+') do |f|
   f.write result
