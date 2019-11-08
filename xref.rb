@@ -1,4 +1,6 @@
 require 'set'
+require 'erb'
+require 'fileutils'
 #--------------Parse Dwarfdump output-------------------------
 system("llvm-dwarfdump --debug-line > dwarfdump.txt")
 dwarfdump_file = File.open("dwarfdump.txt")
@@ -78,12 +80,14 @@ for i in 0..obj_len
         #in the line_table hash for that address, and find the appropriate source line by using the file_num
         #as key in the sources hash to retrieve the source lines. index using src_line_num to retrieve line
         c_lines = []
+        files_name = ""
         if current_block_index != 0
             match_addr = objdump_lines[i].match(ADDRESS_FORMAT)
             addr = match_addr[1]
             line_and_file = line_table.fetch(addr)
             src_line_num = line_and_file[0].to_i
             file_num = line_and_file[1]
+            file_name = files.fetch(file_num)
             src_file = sources.fetch(file_num)
             line = src_file[src_line_num-1]
             c_lines << src_line_num.to_s + ". " + line
@@ -91,7 +95,7 @@ for i in 0..obj_len
         #add current line of assembly to assembly_lines for the new block
         assembly_lines = []
         assembly_lines << line_num.to_s + ". " + objdump_lines[i]
-        current_block = [c_lines, assembly_lines]
+        current_block = [c_lines, assembly_lines, file_name]
         blocks << current_block #add new block to array of blocks
         start_new_block = false
         next
@@ -117,4 +121,15 @@ for i in 0..obj_len
     end
 end
 #uncomment to see output of blocks array. 
-puts blocks.inspect
+#puts blocks.inspect
+
+# render template
+template = File.read('./template.html.erb')
+result = ERB.new(template).result(binding)
+
+File.delete("HTML/xref.rb") if File.exist?("HTML/xref.rb")
+# write result to file
+File.open('HTML/xref.html', 'w+') do |f|
+  f.write result
+end
+
